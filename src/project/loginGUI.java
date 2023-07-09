@@ -4,6 +4,9 @@
  */
 package project;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class loginGUI extends javax.swing.JFrame {
 
+    private static String saveUser;
     /**
      * Creates new form loginGUI
      */
@@ -222,30 +226,60 @@ public class loginGUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void userLogin(String username, String password) {
-        Connection databaseConn = databaseConnection.openConnection();
-        if (databaseConn != null) {
-            try {
-                PreparedStatement st = (PreparedStatement) databaseConn.prepareStatement("Select * from users WHERE username = ? AND password = ?");
-                st.setString(1, username);
-                st.setString(2, password);
-                ResultSet res = st.executeQuery();
-                if (res.next()) {
-                    //Go to main menu
+    Connection databaseConn = databaseConnection.openConnection();
+    if (databaseConn != null) {
+        try {
+            PreparedStatement st = (PreparedStatement) databaseConn.prepareStatement("SELECT * FROM users WHERE username = ?");
+            st.setString(1, username);
+            ResultSet res = st.executeQuery();
+            if (res.next()) {
+                String storedPassword = res.getString("password");
+                // Verify the hashed password
+                if (checkPassword(password, storedPassword)) {
+                    // Save the username
+                    saveUser = username;
+                    // Go to the main menu
                     dispose();
                     mainMenu m = new mainMenu();
                     m.setTitle("Main Menu");
                     m.setVisible(true);
                 } else {
-                    System.out.println("username:" + username);
-                    System.out.println("password" + password);
-                    JOptionPane.showMessageDialog(this, "User Not Found!", "Incorrect Password", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Incorrect Password", "Login Failed", JOptionPane.ERROR_MESSAGE);
                 }
-            } catch (SQLException ex) {
-                Logger.getLogger(loginGUI.class.getName()).log(Level.SEVERE, null, ex);
+            } else {
+                JOptionPane.showMessageDialog(this, "User Not Found!", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            System.out.println("Connection Unavailable");
+        } catch (SQLException ex) {
+            Logger.getLogger(loginGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+    } else {
+        System.out.println("Connection Unavailable");
+    }
+}
+
+    public boolean checkPassword(String plainPassword, String hashedPassword) {
+        // Generate the hash of the plain password
+        String hashedInput = generateHash(plainPassword);
+
+        // Compare the generated hash with the stored hashed password
+        return hashedInput.equals(hashedPassword);
+    }
+
+    public String generateHash(String password) {
+        String hashedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
+
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            hashedPassword = sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(loginGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return hashedPassword;
     }
 
 }

@@ -53,7 +53,6 @@ public class moduleGUI extends javax.swing.JFrame {
         deleteBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         moduleTble = new javax.swing.JTable();
-        searchBtn = new javax.swing.JButton();
         returnBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -154,15 +153,6 @@ public class moduleGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(moduleTble);
 
-        searchBtn.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        searchBtn.setText("Search");
-        searchBtn.setBorder(new javax.swing.border.MatteBorder(null));
-        searchBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtnActionPerformed(evt);
-            }
-        });
-
         returnBtn.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         returnBtn.setText("Return");
         returnBtn.setBorder(new javax.swing.border.MatteBorder(null));
@@ -190,9 +180,6 @@ public class moduleGUI extends javax.swing.JFrame {
                                 .addComponent(deleteBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(updateBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(46, Short.MAX_VALUE))
@@ -211,9 +198,7 @@ public class moduleGUI extends javax.swing.JFrame {
                         .addComponent(updateBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteBtn)
-                        .addGap(66, 66, 66)
-                        .addComponent(searchBtn)
-                        .addGap(41, 41, 41)
+                        .addGap(130, 130, 130)
                         .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 54, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -352,11 +337,6 @@ public class moduleGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
-    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_searchBtnActionPerformed
-
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -409,7 +389,6 @@ public class moduleGUI extends javax.swing.JFrame {
     private javax.swing.JTable moduleTble;
     private javax.swing.JButton readBtn;
     private javax.swing.JButton returnBtn;
-    private javax.swing.JButton searchBtn;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 

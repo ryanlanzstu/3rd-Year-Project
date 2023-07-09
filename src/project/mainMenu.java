@@ -33,7 +33,7 @@ public class mainMenu extends javax.swing.JFrame {
         moduleBtn = new javax.swing.JButton();
         filesBtn = new javax.swing.JButton();
         contactBtn = new javax.swing.JButton();
-        classesBtn = new javax.swing.JButton();
+        amendBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,16 +42,16 @@ public class mainMenu extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setText("Select An Option");
+        jLabel1.setText("Menu");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(148, 148, 148)
+                .addGap(213, 213, 213)
                 .addComponent(jLabel1)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +72,7 @@ public class mainMenu extends javax.swing.JFrame {
         });
 
         moduleBtn.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        moduleBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/icons/Calendar.png"))); // NOI18N
+        moduleBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/icons/College.png"))); // NOI18N
         moduleBtn.setText("Module");
         moduleBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         moduleBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +82,7 @@ public class mainMenu extends javax.swing.JFrame {
         });
 
         filesBtn.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        filesBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/icons/Calendar.png"))); // NOI18N
+        filesBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/icons/File.png"))); // NOI18N
         filesBtn.setText("Files");
         filesBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         filesBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +92,7 @@ public class mainMenu extends javax.swing.JFrame {
         });
 
         contactBtn.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        contactBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/icons/Calendar.png"))); // NOI18N
+        contactBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/icons/Contact.png"))); // NOI18N
         contactBtn.setText("Contact");
         contactBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         contactBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -101,13 +101,13 @@ public class mainMenu extends javax.swing.JFrame {
             }
         });
 
-        classesBtn.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        classesBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/icons/Calendar.png"))); // NOI18N
-        classesBtn.setText("Classes");
-        classesBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        classesBtn.addActionListener(new java.awt.event.ActionListener() {
+        amendBtn.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        amendBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/icons/User.png"))); // NOI18N
+        amendBtn.setText("Amend");
+        amendBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        amendBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                classesBtnActionPerformed(evt);
+                amendBtnActionPerformed(evt);
             }
         });
 
@@ -117,19 +117,19 @@ public class mainMenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(calendarBtn)
-                .addGap(72, 72, 72)
-                .addComponent(moduleBtn)
-                .addGap(60, 60, 60)
-                .addComponent(filesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(134, 134, 134)
+                .addComponent(amendBtn)
+                .addGap(87, 87, 87)
+                .addComponent(contactBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(classesBtn)
-                .addGap(71, 71, 71)
-                .addComponent(contactBtn)
-                .addGap(202, 202, 202))
+                .addGap(28, 28, 28)
+                .addComponent(calendarBtn)
+                .addGap(73, 73, 73)
+                .addComponent(moduleBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(filesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {calendarBtn, filesBtn, moduleBtn});
@@ -138,27 +138,31 @@ public class mainMenu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(87, 87, 87)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(calendarBtn)
+                    .addComponent(filesBtn)
                     .addComponent(moduleBtn)
-                    .addComponent(filesBtn))
-                .addGap(39, 39, 39)
+                    .addComponent(calendarBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactBtn)
-                    .addComponent(classesBtn))
-                .addGap(0, 64, Short.MAX_VALUE))
+                    .addComponent(amendBtn)
+                    .addComponent(contactBtn))
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,9 +194,9 @@ public class mainMenu extends javax.swing.JFrame {
         c.setVisible(true);;
     }//GEN-LAST:event_contactBtnActionPerformed
 
-    private void classesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesBtnActionPerformed
+    private void amendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amendBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_classesBtnActionPerformed
+    }//GEN-LAST:event_amendBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,8 +234,8 @@ public class mainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton amendBtn;
     private javax.swing.JButton calendarBtn;
-    private javax.swing.JButton classesBtn;
     private javax.swing.JButton contactBtn;
     private javax.swing.JButton filesBtn;
     private javax.swing.JLabel jLabel1;

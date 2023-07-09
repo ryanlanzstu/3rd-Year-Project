@@ -61,7 +61,7 @@ public class feedbackGUI extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(209, 209, 209)
+                .addGap(240, 240, 240)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -179,6 +179,7 @@ public class feedbackGUI extends javax.swing.JFrame {
         try{
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(sendEmail));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(receiveEmail));
             message.setText(feedbackArea.getText());
             Transport.send(message);
