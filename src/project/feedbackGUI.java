@@ -13,7 +13,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author ryanl
@@ -89,7 +88,7 @@ public class feedbackGUI extends javax.swing.JFrame {
         nameLbl.setText("First Name:");
         nameLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        toEmailLbl.setText("Feedback Email:");
+        toEmailLbl.setText("Your Email:");
         toEmailLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         toEmailTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -107,9 +106,9 @@ public class feedbackGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(toEmailLbl))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nameLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                            .addComponent(toEmailLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,6 +163,8 @@ public class feedbackGUI extends javax.swing.JFrame {
         String receiveEmail = toEmailTxt.getText();
         String sendEmail = "ryanlanzproject@outlook.com";
         String sendEmailPassword = "Project123456!";//Own email password
+        String subject = "Email Confirmation, Ticket Opened for" + " " + nameTxt.getText();
+        String feedbackMessage = feedbackArea.getText();
 
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
@@ -176,24 +177,27 @@ public class feedbackGUI extends javax.swing.JFrame {
                 return new PasswordAuthentication(sendEmail, sendEmailPassword);
             }
         });
-        try{
+        try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(sendEmail));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(receiveEmail));
-            message.setText(feedbackArea.getText());
+            message.setSubject(subject);
+            String fullMessage = "This is a copy of your email:\n\n" + feedbackMessage
+                    + "\n\nWe aim to get back to you within 1 business day. Thanks for your patience.";
+            message.setText(fullMessage);
+            //message.setText(feedbackArea.getText());
             Transport.send(message);
             JOptionPane.showMessageDialog(this, "Message sent!");
-        }catch(Exception ex){
-            System.out.println(""+ex);
+        } catch (Exception ex) {
+            System.out.println("" + ex);
         }
-      
+
     }//GEN-LAST:event_sendBtnActionPerformed
 
     private void toEmailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toEmailTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_toEmailTxtActionPerformed
-
 
     /**
      * @param args the command line arguments

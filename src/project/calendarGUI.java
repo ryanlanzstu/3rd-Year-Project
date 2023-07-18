@@ -25,6 +25,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -39,6 +40,7 @@ public class calendarGUI extends javax.swing.JFrame {
      */
     private JCalendar calendar;
     private JLabel eventLabel;
+    private boolean eventAdded;
 
     public calendarGUI() {
         initComponents();
@@ -246,56 +248,66 @@ public class calendarGUI extends javax.swing.JFrame {
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
         // Create and add components to the dialog for adding an event
-        JPanel panel = new JPanel();
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+
         JLabel dateLabel = new JLabel("Date:");
-        JLabel descLabel = new JLabel("Event Description:");
-        JLabel nameLabel = new JLabel("Event Name");
-        JLabel moduleCodeLabel = new JLabel("Module Code:");
         JCalendar dateCalendar = new JCalendar();
-        JTextField descField = new JTextField(5);
-        JTextField nameField = new JTextField(5);
-        JTextField moduleCodeField = new JTextField(5);
+
+        contentPanel.add(dateLabel);
+        contentPanel.add(dateCalendar);
+
+        JPanel fieldsPanel = new JPanel();
+        fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.Y_AXIS));
+
+        JLabel descLabel = new JLabel("Event Description:");
+        JTextField descField = new JTextField(15);
+        JLabel nameLabel = new JLabel("Event Name:");
+        JTextField nameField = new JTextField(15);
+        JLabel moduleCodeLabel = new JLabel("Module Code:");
+        JTextField moduleCodeField = new JTextField(15);
+
+        fieldsPanel.add(descLabel);
+        fieldsPanel.add(descField);
+        fieldsPanel.add(nameLabel);
+        fieldsPanel.add(nameField);
+        fieldsPanel.add(moduleCodeLabel);
+        fieldsPanel.add(moduleCodeField);
+
+        contentPanel.add(fieldsPanel);
+
         JButton saveButton = new JButton("Save");
 
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(saveButton);
 
-        // Configure the layout
-        panel.setLayout(new GridLayout(5, 2));
-        panel.add(dateLabel);
-        panel.add(dateCalendar);
-        panel.add(descLabel);
-        panel.add(descField);
-        panel.add(nameLabel);
-        panel.add(nameField);
-        panel.add(moduleCodeLabel);
-        panel.add(moduleCodeField);
-        panel.add(saveButton);
-        
-   // Adjust the size of the text fields
-    Dimension fieldSize = new Dimension(200, 30);
-    descField.setPreferredSize(fieldSize);
-    nameField.setPreferredSize(fieldSize);
-    moduleCodeField.setPreferredSize(fieldSize);
+        contentPanel.add(buttonPanel);
 
-    // ...
-
-    // Add the panel to the dialog
-    dialog.getContentPane().add(panel);
-
-
-        // Add an action listener to the save button
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 // Retrieve the selected date from the calendar
                 Date selectedDate = dateCalendar.getDate();
-
                 // Retrieve the event description from the text field
                 String eventDescription = descField.getText();
-
                 // Retrieve the event name from the text field
                 String eventName = nameField.getText();
-
                 // Retrieve the module code from the text field
-                int moduleCode = Integer.parseInt(moduleCodeField.getText());
+                String moduleCodeText = moduleCodeField.getText();
+
+                // Check if any of the fields are empty
+                if (eventDescription.isEmpty() || eventName.isEmpty() || moduleCodeText.isEmpty()) {
+                    JOptionPane.showMessageDialog(dialog, "Please don't leave any fields blank.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return; // Stop execution if any field is empty
+                }
+
+                // Retrieve the module code as an integer
+                int moduleCode;
+                try {
+                    moduleCode = Integer.parseInt(moduleCodeText);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(dialog, "Module Code must be a digit!.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return; // Stop execution if module code is not a valid integer
+                }
 
                 // Connect to MySQL server
                 String url = "jdbc:mysql://localhost:3307/project";
@@ -316,15 +328,14 @@ public class calendarGUI extends javax.swing.JFrame {
             }
         });
 
-        // Add the panel to the dialog
-        dialog.getContentPane().add(panel);
+        dialog.setContentPane(contentPanel);
 
         dialog.pack();
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
     }
 
-    private void saveEvent(Connection connection, Date selectedDate, String eventDescription, String eventName, int moduleCode) {
+    public void saveEvent(Connection connection, Date selectedDate, String eventDescription, String eventName, int moduleCode) {
         try {
             String sql = "INSERT INTO events (dateOfEvent, descOfEvent, nameOfEvent, moduleCode) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -338,6 +349,10 @@ public class calendarGUI extends javax.swing.JFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Failed to save event.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public boolean isEventAdded() {
+        return eventAdded;
     }
 
     private void findEvents(Date selectedDate) {

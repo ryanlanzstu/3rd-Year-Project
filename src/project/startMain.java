@@ -10,7 +10,7 @@ package project;
  */
 public class startMain {
 
-    /**
+    /**Ú
      * @param args the command line arguments
      */
     public static void main(String[] args) {

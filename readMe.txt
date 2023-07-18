@@ -5,7 +5,7 @@ On my side I created the program with Netbeans 12.5 with Java 8. I utilizes and 
 
 1. Download whole file from Github: https://github.com/ryanlanzstu/3rd-Year-Project
 2. Notice Libraries folder as well as 'project (1).sql' files.
-3. Install Netbeans & myPhpAdmin if needed and open project.
+3. Install Netbeans & myPhpAdmin if needed and open project. (IntelliJ is simpler and loads libraries intself. Language level is 8 with jdk1.8.0_111)
 4. Add libraries as needed. (Netbeans: Tools -> Libraries -> New Library (Name Of Library) -> Add Jar Files -> OK & Close Window -> Right Click Libraries In Project Folder In Netbeans & 'Add Library'.
 5. In Project go to source package and open 'databaseConnection.java' class. Amend the following to your own needs: 
 	

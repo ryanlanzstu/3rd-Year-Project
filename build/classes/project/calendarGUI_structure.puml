@@ -1,0 +1,407 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "project.calendarGUI",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1149550201 { 
+   	label=toedter
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1447234083 { 
+   	label=components
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   JSpinField1169396886[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JSpinField</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   darkGreen: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   max: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   min: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   spinner: JSpinner [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   textField: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   value: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ actionPerformed(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ adjustWidthToMaximumValue()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ caretUpdate(e: CaretEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ focusGained(e: FocusEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ focusLost(e: FocusEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(s: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stateChanged(e: ChangeEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+UTF8ResourceBundle1169396886[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)UTF8ResourceBundle</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getBundle(baseName: String, locale: Locale): ResourceBundle</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_285438917 { 
+   	label=calendar
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   BirthdayEvaluator812721729[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BirthdayEvaluator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   calendar: Calendar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   darkGreen: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lightGreen: Color [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ isInvalid(date: Date): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isSpecial(date: Date): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DateUtil35448978[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DateUtil</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   defaultMaxSelectableDate: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   defaultMinSelectableDate: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   maxSelectableDate: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   minSelectableDate: Date [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ checkDate(date: Date): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setMaxSelectableDate(max: Date): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setMinSelectableDate(min: Date): Date</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JCalendar35448978[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JCalendar</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   calendar: Calendar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dayChooser: JDayChooser [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   defaultNullDateButtonText: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   defaultTodayButtonText: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   initialized: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   isNullDateButtonVisible: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   isTodayButtonVisible: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   locale: Locale [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   monthChooser: JMonthChooser [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   monthYearPanel: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nullDateButton: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nullDateButtonText: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   specialButtonPanel: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   todayButton: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   todayButtonText: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   weekOfYearVisible: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   yearChooser: JYearChooser [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(s: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ propertyChange(evt: PropertyChangeEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >- relayoutSpecialButtonPanel()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JDayChooser35448978[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JDayChooser</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   alwaysFireDayProperty: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   calendar: Calendar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dateEvaluators: List [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   day: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dayBordersVisible: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dayNames: String[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dayPanel: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   days: JButton[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   decorationBackgroundColor: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   decorationBackgroundVisible: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   decorationBordersVisible: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   initialized: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   locale: Locale [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   maxDayCharacters: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   minMaxDateEvaluator: MinMaxDateEvaluator [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   oldDayBackgroundColor: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   selectedColor: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   selectedDay: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   sundayForeground: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   today: Calendar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   weekOfYearVisible: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   weekPanel: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   weekdayForeground: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   weeks: JButton[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ actionPerformed(e: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addDateEvaluator(dateEvaluator: IDateEvaluator)</TD></TR>
+<TR><TD ALIGN="LEFT" >- drawDayNames()</TD></TR>
+<TR><TD ALIGN="LEFT" ># drawDays()</TD></TR>
+<TR><TD ALIGN="LEFT" ># drawWeeks()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ focusGained(e: FocusEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ focusLost(e: FocusEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" ># init()</TD></TR>
+<TR><TD ALIGN="LEFT" ># initDecorations()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyPressed(e: KeyEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyReleased(e: KeyEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyTyped(e: KeyEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(s: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeDateEvaluator(dateEvaluator: IDateEvaluator)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setMaxSelectableDate(max: Date): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setMinSelectableDate(min: Date): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateUI()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JMonthChooser35448978[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JMonthChooser</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   comboBox: JComboBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dayChooser: JDayChooser [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   hasSpinner: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   initialized: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   localInitialize: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   locale: Locale [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   month: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   oldSpinnerValue: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   spinner: JSpinner [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   yearChooser: JYearChooser [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initNames()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ itemStateChanged(e: ItemEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(s: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ stateChanged(e: ChangeEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateUI()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+JYearChooser35448978[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JYearChooser</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   dayChooser: JDayChooser [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   endYear: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   oldYear: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   startYear: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(s: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MinMaxDateEvaluator35448978[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MinMaxDateEvaluator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   dateUtil: DateUtil [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ isInvalid(date: Date): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isSpecial(date: Date): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setMaxSelectableDate(max: Date): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setMinSelectableDate(min: Date): Date</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TestDateEvaluator812721729[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TestDateEvaluator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   calendar: Calendar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   calendar2: Calendar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   darkGreen: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   darkRed: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lightGreen: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lightRed: Color [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ isInvalid(date: Date): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isSpecial(date: Date): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_309310695 { 
+   	label=project
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   calendarGUI309310695[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)calendarGUI</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   addBtn: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   calendar: JCalendar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   eventLabel: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jCalendar1: JCalendar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jLabel1: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jPanel1: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   jPanel2: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   returnBtn: JButton [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addBtnActionPerformed(evt: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >- addEventDialog()</TD></TR>
+<TR><TD ALIGN="LEFT" >- eventHandling()</TD></TR>
+<TR><TD ALIGN="LEFT" >- findEvents(selectedDate: Date)</TD></TR>
+<TR><TD ALIGN="LEFT" >- initComponents()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >- returnBtnActionPerformed(evt: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >- saveEvent(connection: Connection, selectedDate: Date, eventDescription: String, eventName: String, moduleCode: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+JCalendar35448978 -> JDayChooser35448978[label="dayChooser
+[0..1]"];
+JCalendar35448978 -> JMonthChooser35448978[label="monthChooser
+[0..1]"];
+JCalendar35448978 -> JYearChooser35448978[label="yearChooser
+[0..1]"];
+JCalendar35448978 -> UTF8ResourceBundle1169396886[label="relayoutSpecialButtonPanel() -> getBundle()"];
+JDayChooser35448978 -> BirthdayEvaluator812721729[arrowhead=none];
+JDayChooser35448978 -> MinMaxDateEvaluator35448978[arrowhead=none];
+JDayChooser35448978 -> TestDateEvaluator812721729[arrowhead=none];
+JMonthChooser35448978 -> JDayChooser35448978[label="dayChooser
+[0..1]"];
+JMonthChooser35448978 -> JYearChooser35448978[label="yearChooser
+[0..1]"];
+JSpinField1169396886 -> JYearChooser35448978[arrowhead=none, arrowtail=empty, dir=both];
+JYearChooser35448978 -> JDayChooser35448978[label="dayChooser
+[0..1]"];
+MinMaxDateEvaluator35448978 -> DateUtil35448978[label="dateUtil
+[0..1]"];
+calendarGUI309310695 -> JCalendar35448978[label="calendar
+[0..1]"];
+calendarGUI309310695 -> JCalendar35448978[label="jCalendar1
+[0..1]"];
+    
+}
+@enduml

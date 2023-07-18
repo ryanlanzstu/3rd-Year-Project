@@ -184,6 +184,7 @@ public class mainMenu extends javax.swing.JFrame {
 
     private void filesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filesBtnActionPerformed
         // TODO add your handling code here:dispose();
+        dispose();
         fileGUI f = new fileGUI();
         f.setVisible(true);
     }//GEN-LAST:event_filesBtnActionPerformed
@@ -196,6 +197,8 @@ public class mainMenu extends javax.swing.JFrame {
 
     private void amendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amendBtnActionPerformed
         // TODO add your handling code here:
+        amendGUI a = new amendGUI();
+        a.setVisible(true);;
     }//GEN-LAST:event_amendBtnActionPerformed
 
     /**
